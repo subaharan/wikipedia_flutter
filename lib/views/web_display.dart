@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebPage extends StatefulWidget {
-  // var index;
+  String title;
   String url;
 
-  WebPage({Key key, @required this.url})
+  WebPage({Key key, @required this.url, @required this.title})
       : super(key: key);
 
   @override
@@ -25,14 +25,17 @@ class _WebPageState extends State<WebPage>{
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Colors.white,
           leading: GestureDetector(
-              child: Icon(Icons.arrow_back_ios),
+              child: Icon(Icons.arrow_back_ios, color: Colors.black87,),
               onTap: (){
                 // widget.onFinish(null);
                 Navigator.pop(context);
               }
           ),
+          title: Text(widget.title, style: TextStyle(
+            color: Colors.black87
+          ),),
         ),
         body: Stack(
           children: [

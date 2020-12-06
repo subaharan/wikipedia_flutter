@@ -15,3 +15,16 @@ class TextChanged extends SearchEvent {
   @override
   String toString() => 'TextChanged { text: $text }';
 }
+
+class NextPage extends SearchEvent {
+  final String text;
+  final int pageNo;
+
+  const NextPage({this.text, this.pageNo});
+
+  @override
+  List<Object> get props => [text];
+
+  @override
+  String toString() => 'TextChanged { text: $text }';
+}

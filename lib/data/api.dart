@@ -12,7 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class API {
-  static final baseUrl = "https://en.wikipedia.org/";
+  static final baseUrl = ".wikipedia.org/";
+  static final https_ = "https://";
 
   static Future search(var searchString) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -30,8 +31,8 @@ class API {
     queryParams.append('wbptterms', 'description');
     queryParams.append('gpslimit', 15);
 
-    var url = baseUrl + "/w/api.php/?"+queryParams.toString() ;
-    print(url);
+    var url = https_+pref.getString('language')+baseUrl + "/w/api.php?"+queryParams.toString() ;
+    print(url +pref.getString('language'));
     return http.get(url, headers: {"Accept": "application/json"});
   }
 
